@@ -10,13 +10,13 @@
 
     <script>
         function loadImages() {
-            fetch('http://127.0.0.1:3000/images')
+            fetch('https://fotos-back.vercel.app/images')
             .then(response => response.json())
             .then(images => {
                 const gallery = document.getElementById('gallery');
                 images.forEach(image => {
                     const img = document.createElement('img');
-                    img.src = `http://localhost:3000/uploads/${image}`;
+                    img.src = `https://fotos-back.vercel.app/uploads/${image}`;
                     img.style.width = '150px'; // Define o tamanho das imagens
                     gallery.appendChild(img);
                 });
