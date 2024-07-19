@@ -19,9 +19,9 @@
                     gallery.innerHTML = ''; // Limpar a galeria antes de adicionar novas imagens
                     images.forEach(image => {
                         const img = document.createElement('img');
-                        img.src = image;
+                        img.src = `data:${image.contentType};base64,${image.base64}`;
                         img.style.width = '150px'; // Define o tamanho das imagens
-                        img.alt = 'Imagem carregada'; // Adicionar texto alternativo
+                        img.alt = image.name; // Adicionar texto alternativo
                         gallery.appendChild(img);
                     });
                 } else {
