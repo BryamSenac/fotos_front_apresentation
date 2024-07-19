@@ -16,10 +16,12 @@
                 console.log('Resposta recebida:', images);
                 if (Array.isArray(images)) {
                     const gallery = document.getElementById('gallery');
+                    gallery.innerHTML = ''; // Limpar a galeria antes de adicionar novas imagens
                     images.forEach(image => {
                         const img = document.createElement('img');
                         img.src = image;
                         img.style.width = '150px'; // Define o tamanho das imagens
+                        img.alt = 'Imagem carregada'; // Adicionar texto alternativo
                         gallery.appendChild(img);
                     });
                 } else {
