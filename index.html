@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualizar Imagens</title>
+</head>
+<body>
+    <h1>Imagens Carregadas</h1>
+    <div id="gallery"></div>
+
+    <script>
+        function loadImages() {
+            fetch('http://127.0.0.1:3000/images')
+            .then(response => response.json())
+            .then(images => {
+                const gallery = document.getElementById('gallery');
+                images.forEach(image => {
+                    const img = document.createElement('img');
+                    img.src = `http://localhost:3000/uploads/${image}`;
+                    img.style.width = '150px'; // Define o tamanho das imagens
+                    gallery.appendChild(img);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar imagens:', error);
+            });
+        }
+
+        loadImages();
+    </script>
+</body>
+</html>
