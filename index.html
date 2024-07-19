@@ -13,12 +13,12 @@
             fetch('https://fotos-back.vercel.app/images')
             .then(response => response.json())
             .then(images => {
-                console.log('Resposta recebida:', images); // Adicionando log para verificar a resposta
-                if (Array.isArray(images)) { // Verificando se 'images' é um array
+                console.log('Resposta recebida:', images);
+                if (Array.isArray(images)) {
                     const gallery = document.getElementById('gallery');
                     images.forEach(image => {
                         const img = document.createElement('img');
-                        img.src = `https://fotos-back.vercel.app/uploads/${image}`;
+                        img.src = image;
                         img.style.width = '150px'; // Define o tamanho das imagens
                         gallery.appendChild(img);
                     });
