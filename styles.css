@@ -1,0 +1,46 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+#logo-senac{
+    position: absolute;
+    top: 3vh;
+    left: 2vw;
+    width: 8vw;
+}
+h1{
+    position: absolute;
+    width: 100%;
+    top: 2vh;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 3vw;
+    color: #004B8D;/*#F68B1F;*/
+}
+.image-container{
+    position: absolute;
+    width: 12vw;
+    height: 15vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(240, 240, 240);
+    border-radius: 1vw;
+}
+.image-container img{
+    border-radius: 50%;
+    display: flex;
+    width: 10vw;
+}
+.image-container h4{
+    font-size: 1.5vw;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(30, 30, 30);
+    width: 80%;
+    margin: 0.5vw 0; 
+    text-align: center;
+    border-bottom: 2px solid #F68B1F;
+}

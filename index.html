@@ -1,39 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <title>Visualizar Imagens</title>
+    <link href="http://www.pr.senac.br/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./index.js" defer></script>
 </head>
+
 <body>
-    <h1>Imagens Carregadas</h1>
-    <div id="gallery"></div>
-
-    <script>
-        function loadImages() {
-            fetch('https://fotos-back.vercel.app/images')
-            .then(response => response.json())
-            .then(images => {
-                console.log('Resposta recebida:', images);
-                if (Array.isArray(images)) {
-                    const gallery = document.getElementById('gallery');
-                    gallery.innerHTML = ''; // Limpar a galeria antes de adicionar novas imagens
-                    images.forEach(image => {
-                        const img = document.createElement('img');
-                        img.src = `data:${image.contentType};base64,${image.base64}`;
-                        img.style.width = '150px'; // Define o tamanho das imagens
-                        img.alt = image.name; // Adicionar texto alternativo
-                        gallery.appendChild(img);
-                    });
-                } else {
-                    console.error('Erro: a resposta não é uma matriz:', images);
-                }
-            })
-            .catch(error => {
-                console.error('Erro ao carregar imagens:', error);
-            });
-        }
-
-        loadImages();
-    </script>
+    <img id="logo-senac" src="https://th.bing.com/th/id/R.626e6f667294475d22b50f3c2d4b3bf1?rik=WlNGG%2bTdg8H1tA&pid=ImgRaw&r=0">
+    <h1>PARTICIPANTES DO SORTEIO</h1>
+    <div id="gallery">
+        
+    </div>
 </body>
 </html>
