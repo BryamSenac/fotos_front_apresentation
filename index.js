@@ -5,13 +5,14 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase
 import { getStorage, ref, listAll, getDownloadURL, getMetadata } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-storage.js';
 
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  };
+    apiKey: "AIzaSyAMvBiBevtwehlp600lr_oPXEwW38jlYt8",
+    authDomain: "imgs-7b388.firebaseapp.com",
+    projectId: "imgs-7b388",
+    storageBucket: "imgs-7b388.appspot.com",
+    messagingSenderId: "831912228261",
+    appId: "1:831912228261:web:4b5d6aabe135405deaa44c",
+    measurementId: "G-J6195R0VHR"
+};
 
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
