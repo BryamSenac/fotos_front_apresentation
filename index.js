@@ -3,7 +3,6 @@
 // Firebase Configuração e Inicialização
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
 import { getStorage, ref, listAll, getDownloadURL, getMetadata } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-storage.js';
-
 const firebaseConfig = {
     apiKey: "AIzaSyAMvBiBevtwehlp600lr_oPXEwW38jlYt8",
     authDomain: "imgs-7b388.firebaseapp.com",
@@ -28,7 +27,10 @@ async function loadImages() {
         for (const itemRef of res.items) {
             const url = await getDownloadURL(itemRef);
             const metadata = await getMetadata(itemRef);
-            const names = metadata.customMetadata?.nomes || 'N/A';
+            console.log(metadata);
+            
+            const names = metadata.customMetadata && metadata.customMetadata.names ? metadata.customMetadata.names : 'N/A';
+
             const container = document.createElement('div'); // Contêiner para imagem e nome
             container.className = 'image-container'; // Classe para estilização
 
