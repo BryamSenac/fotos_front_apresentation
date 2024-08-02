@@ -35,7 +35,13 @@ async function loadImages() {
             container.className = 'image-container'; // Classe para estilização
 
             let top = Math.floor(Math.random() * 100);
+            while (top < 15|| top > 70) {
+                top = rotateGenerator();
+            }
             let left = Math.floor(Math.random() * 100);
+            while (left < 5 || left > 85) {
+                left = rotateGenerator();
+            }
             let rotate = rotateGenerator();
             while (rotate < -35 || rotate > 35) {
                 rotate = rotateGenerator();
@@ -70,6 +76,48 @@ function rotateGenerator() {
         r = r - 100;
     }
     return r;
+}
+
+async function loadRandomImage() {
+    try {
+        const listRef = ref(storage, 'images/');
+        const res = await listAll(listRef);
+
+        if (res.items.length === 0) {
+            console.error('Nenhuma imagem encontrada.');
+            return;
+        }
+
+        // Seleciona um item aleatório da lista
+        const randomIndex = Math.floor(Math.random() * res.items.length);
+        const randomItemRef = res.items[randomIndex];
+
+        // Pega a URL e metadados da imagem aleatória
+        const url = await getDownloadURL(randomItemRef);
+        const metadata = await getMetadata(randomItemRef);
+
+        const names = metadata.customMetadata && metadata.customMetadata.names ? metadata.customMetadata.names : 'N/A';
+
+        const sorteado = document.getElementById('sorteado');
+        sorteado.innerHTML = ''; // Limpar a galeria antes de adicionar a nova imagem
+
+        const container = document.createElement('div'); // Contêiner para imagem e nome
+        container.className = 'image-sorteado'; // Classe para estilização
+
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = names; // Adicionar texto alternativo
+
+        const nameDiv = document.createElement('h6');
+        nameDiv.textContent = names; // Adiciona o nome da imagem
+
+        container.appendChild(img);
+        sorteado.appendChild(container);
+        sorteado.appendChild(nameDiv);
+
+    } catch (error) {
+        console.error('Erro ao carregar imagem aleatória:', error);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
