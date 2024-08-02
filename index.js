@@ -55,8 +55,6 @@ async function loadImages() {
 
             const img = document.createElement('img');
             img.src = url;
-            img.style.width = '80%';
-            img.style.height = '80%';
             img.alt = names; // Adicionar texto alternativo
 
             const nameDiv = document.createElement('h4');
