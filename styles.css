@@ -69,9 +69,11 @@ h1{
     top: 10vh;
     left: 35vw;
     width: 30vw;
-    height: 80vh;
-    border-radius: 5vw;
+    height: 77vh;
+    border-radius: 2vw;
     background-color: #004B8D;
+    display: none;
+    transition: all 0.5s ease-in-out;
 }
 .img-sorteado{
     position: absolute;

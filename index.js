@@ -24,10 +24,11 @@ async function loadImages() {
         const gallery = document.getElementById('gallery');
         gallery.innerHTML = ''; // Limpar a galeria antes de adicionar novas imagens
 
+        let i = 0;
         for (const itemRef of res.items) {
+            i++;
             const url = await getDownloadURL(itemRef);
             const metadata = await getMetadata(itemRef);
-            console.log(metadata);
             
             const names = metadata.customMetadata && metadata.customMetadata.names ? metadata.customMetadata.names : 'N/A';
 
@@ -54,6 +55,8 @@ async function loadImages() {
 
             const img = document.createElement('img');
             img.src = url;
+            img.style.width = '80%';
+            img.style.height = '80%';
             img.alt = names; // Adicionar texto alternativo
 
             const nameDiv = document.createElement('h4');
@@ -64,7 +67,7 @@ async function loadImages() {
             container.appendChild(nameDiv);
             gallery.appendChild(container);
         }
-
+        console.log(i);
     } catch (error) {
         console.error('Erro ao carregar imagens:', error);
     }
@@ -102,10 +105,14 @@ async function loadRandomImage() {
         sorteado.innerHTML = ''; // Limpar a galeria antes de adicionar a nova imagem
 
         const container = document.createElement('div'); // Contêiner para imagem e nome
-        container.className = 'image-sorteado'; // Classe para estilização
+        container.className = 'img-sorteado'; // Classe para estilização
 
         const img = document.createElement('img');
+        img.style.width = '100%';   
+        img.style.height = '100%';
+        img.style.borderRadius = '50%';     
         img.src = url;
+
         img.alt = names; // Adicionar texto alternativo
 
         const nameDiv = document.createElement('h6');
@@ -114,11 +121,14 @@ async function loadRandomImage() {
         container.appendChild(img);
         sorteado.appendChild(container);
         sorteado.appendChild(nameDiv);
+        sorteado.style.display = 'block';
 
     } catch (error) {
         console.error('Erro ao carregar imagem aleatória:', error);
     }
 }
+
+window.loadRandomImage = loadRandomImage;
 
 document.addEventListener('DOMContentLoaded', function () {
     loadImages();
